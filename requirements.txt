@@ -8,4 +8,5 @@ jinja2
 pip
 flask
 sklearn
+xlrd
 
