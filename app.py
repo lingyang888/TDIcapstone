@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
-import itertools
 
 from bokeh.plotting import figure, show
 from bokeh.resources import CDN
@@ -191,7 +190,7 @@ def index():
     p1 = figure(title = 'Award Proportion', x_axis_label = 'Year',
                 y_axis_label = 'Award Proportion (%)',
                 plot_width=600, plot_height=600)
-    colors = itertools.cycle(palette)
+    colors = list(palette)
     i = 0
     for result in results:
         y_bokeh = []
@@ -203,7 +202,7 @@ def index():
             y_bokeh2.append(val)
 
         p1.line(x_bokeh, y_bokeh, legend_label = keys[i],
-                line_color = next(colors), width = 3)
+                line_color = colors.pop(), width = 3)
         p1.line(x_bokeh2, y_bokeh2, legend_label = keys[i]+' prediction '+low_mode[keys[i]],
                 line_color = 'red',line_dash='dashed')
 
@@ -234,17 +233,17 @@ def index():
             'SVR': svr_bokeh
             }
     source = ColumnDataSource(data=data_bar)
-    colors = itertools.cycle(palette)
+    colors = list(palette)
 
     p2 = figure(x_range=key_bokeh, title="Prediction Error",
                y_axis_label='Error (%)', plot_height=400, plot_width=600)
 
     p2.vbar(x=dodge('research', -0.25, range=p2.x_range), top='Decision Tree', width=0.2, source=source,
-           color=next(colors), legend_label="Decision Tree")
+           color=colors.pop(), legend_label="Decision Tree")
     p2.vbar(x=dodge('research',  0.0,  range=p2.x_range), top='Polynomial', width=0.2, source=source,
-           color=next(colors), legend_label="Polynomial")
+           color=colors.pop(), legend_label="Polynomial")
     p2.vbar(x=dodge('research',  0.25,  range=p2.x_range), top='SVR', width=0.2, source=source,
-           color=next(colors), legend_label="SVR")
+           color=colors.pop(), legend_label="SVR")
 
     p2.title.text_font_size = '16px'
     p2.title.align = 'center'
