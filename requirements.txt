@@ -1,0 +1,9 @@
+gunicorn==19.9.0
+requests==2.20.0
+numpy
+pandas
+bokeh==2.1.1
+dill
+jinja2
+pip
+flask
