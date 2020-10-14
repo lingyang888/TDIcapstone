@@ -7,3 +7,6 @@ dill
 jinja2
 pip
 flask
+itertools
+sklearn
+
