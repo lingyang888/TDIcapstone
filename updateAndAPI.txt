@@ -5,6 +5,7 @@ git commit -am "some text"
 git push
 git push heroku master
 
+
 Update remote github:
 
 https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line

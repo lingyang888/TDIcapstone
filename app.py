@@ -18,8 +18,8 @@ from sklearn.svm import SVR
 from sklearn.tree import DecisionTreeRegressor
 
 app = Flask(__name__)
-df = pd.read_excel('rawData.xlsx')
-df_2019 = pd.read_excel('data2019.xlsx')
+df = pd.read_excel('rawData_select.xlsx')
+df_2019 = pd.read_excel('data2019_select.xlsx')
 
 state_group = df.groupby('State', as_index=False)
 count = state_group['Award Amount'].agg('count')
@@ -243,7 +243,7 @@ def index():
     p2.vbar(x=dodge('research',  0.0,  range=p2.x_range), top='Polynomial', width=0.2, source=source,
            color=colors.pop(), legend_label="Polynomial")
     p2.vbar(x=dodge('research',  0.25,  range=p2.x_range), top='SVR', width=0.2, source=source,
-           color=colors.pop(), legend_label="SVR")
+           color=colors.pop(), legend_label="SVM")
 
     p2.title.text_font_size = '16px'
     p2.title.align = 'center'
