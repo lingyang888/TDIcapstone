@@ -1,5 +1,5 @@
 This project utilizes the 2010-2019 award database from the SBIR program to predict future funding allocation.
-The dataset used for analysis has been cleaned up to extract information.
+The dataset used for analysis has been cleaned up to extract information (saved as xlsx files).
 Three machine learning models, Dicision Tree, Polynomial Regression, and SVR are applied individually.
 Predition for 2019 is first generated and compared to the available 2019 data. 
 The model with the smallest error is then applied to predict funding allocation from 2020 to 2022.
